@@ -1,0 +1,22 @@
+---
+title: "Subsetting - Partial Matching"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Partial Matching
+
+Partial matching of names is allowed with `[[` and `$`.
+
+```{r}
+x <- list(aardvark = 1:5)
+x$a
+x[["a"]]
+x[["a", exact = FALSE]]
+```
+
+
+
