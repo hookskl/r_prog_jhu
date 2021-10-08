@@ -1,0 +1,74 @@
+---
+title: "Data Types - Vectors and Lists"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Creating Vectors
+
+The `c()` function can be used to create vectors of objects.
+
+```{r}
+x <- c(0.5, 0.6)      ## numeric
+x <- c(TRUE, FALSE)   ## logical
+x <- c(T, F)          ## also logical
+x <- c("a", "b", "c") ## character
+x <- 9:29             ## integer
+x <- c(1+0i, 2+4i)    ## complex
+```
+
+Using the `vector()` function
+
+```{r}
+x <- vector("numeric", length = 10)
+x
+```
+
+
+## Mixing Ojbects
+
+What happens below?
+
+```{r}
+y <- c(1.7, "a")  ## character
+y <- c(TRUE, 2)   ## numeric
+y <- c("a", TRUE) ## character
+```
+
+R won't error, but will instead *coerce* every element in the vector to the same class.
+
+## Explicit Coercion
+
+Objects can be coerced explicitly using the `as.*` functions, if available.
+
+```{r}
+x <- 0:6
+print(class(x))
+print(as.numeric(x))
+print(as.logical(x))
+print(as.character(x))
+
+```
+
+Nonsensical coercion results in `NA`s.
+
+```{r}
+x <- c("a", "b", "c")
+print(as.numeric(x))
+print(as.logical(x))
+print(as.complex(x))
+```
+
+## Lists
+
+Lists are a special type of vector that can contain elements of different classes. Lists are a very important data type in R.
+
+```{r}
+x <- list(1, "a", TRUE, 1 + 4i)
+x
+```
+
