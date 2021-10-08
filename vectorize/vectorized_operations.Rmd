@@ -1,0 +1,33 @@
+---
+title: "Vectorized Operations"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Vectorized Operations
+
+Many operation in R are *vectorized* making code more efficient, concise, and easier to read.
+
+```{r}
+x <- 1:4; y <- 6:9
+
+x + y
+x > 2
+x >= 2
+y == 8
+x * y
+x / y
+```
+
+## Vectorized Matrix Operations
+
+```{r}
+x <- matrix(1:4, 2, 2); y <- matrix(rep(10,4), 2, 2)
+x * y ## element-wise multiplication
+x / y 
+x %*% y ## true matrix multiplcation
+```
+
