@@ -65,3 +65,7 @@ head(x, 3)
     ## [1] "<!DOCTYPE html>"                                                 
     ## [2] "<html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">"
     ## [3] "  <head>"
+
+``` r
+close(con)
+```

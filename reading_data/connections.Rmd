@@ -60,5 +60,6 @@ x <- readLines(con, 10) # reads the first 10 lines of a file
 con <- url("http://www.jhsph.edu", "r")
 x <- readLines(con)
 head(x, 3)
+close(con)
 ```
 
