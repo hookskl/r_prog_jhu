@@ -1,0 +1,51 @@
+---
+title: "Control Structures - If-else"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Control Structures: if
+
+Note that `else` and `else if` are not required.
+
+```{r eval = FALSE}
+if(<condition>) {
+  ## do something
+} else {
+  ## do something else
+}
+if(<condition>) {
+  ## do something
+} else if (<condition2>) {
+  ## do something different
+} else {
+  ## do something else
+}
+```
+
+## if
+
+This is a valid if/else structure.
+
+```{r eval = FALSE}
+if(x > 3) {
+  y <- 10
+} else {
+  y <- 0
+}
+```
+
+So is this one.
+
+```{r eval = FALSE}
+y <- if(x > 3) {
+  10
+} else {
+  0
+}
+```
+
+
