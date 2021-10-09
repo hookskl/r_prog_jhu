@@ -2,48 +2,35 @@ corr <- function(directory, threshold = 0) {
   ## `directory` is a character vector of length 1 indicating
   ## the location of the csv files
   
-  ## `threshold` is a numeric vector of lenght 1 indicating the
+  ## `threshold` is a numeric vector of length 1 indicating the
   ## number of completely observed observations (on all
   ## variables) required to compute the correlation between
-  ## nitrate and sulfate; the deftaul is 0
+  ## nitrate and sulfate; the default is 0
   
   ## Return a numeric vector of correlations
   ## NOTE: Do not round the result
   
-  # helper fucntion to create path 
-  create_path <- function(directory, id) {
-    if (id < 10) {
-      path <- paste0(directory, "/00", id, ".csv")
-    }
-    if (id < 100 & id >= 10) {
-      path <- paste0(directory, "/0", id, ".csv")
-    }
-    if (id >= 100) {
-      path <- paste0(directory, "/", id, ".csv")
-    }
-    path
-  }
+  ## Check for complete cases above threshold
   df <- complete("specdata")
-  id <- as.numeric(df$id[df$nobs > threshold])
+  id <- df$id[df$nobs > threshold]
   
-  if (length(id) == 0) {
-    return(c(0))
-
+  ## Check if any fall above threshold
+  if(length(id) == 0) {
+    return(numeric(0)) # returns numeric vector of length 0 if fail
   }
   
-
-  get_corr <- function(directory, id) {
-    path <- create_path(directory, id)
-    df <- read.csv(path)
-    cor(df$sulfate, df$nitrate, use = "pairwise.complete.obs")
-  }
+  ## read in dfs with required complete cases
+  # get file paths
+  paths <- list.files(path = directory, pattern = ".csv", full.names = TRUE)
+  # filter those paths matching id
+  paths <- paths[id]
+  # create a list of read in dfs
+  dfs <- lapply(paths, read.csv)
+  # create list of cors
+  cors <- lapply(dfs, function(df) cor(df$sulfate, df$nitrate, use = "complete.obs"))
+  unlist(cors)
   
-  sapply(id, get_corr, directory = directory)  
-  
-
 }
-
-
 
 
 
