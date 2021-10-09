@@ -7,4 +7,33 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 
+## tapply
+
+`tapply` is used to apply a function over subsets of a vector. In this case the name isn't conducive to how the function operates.
+
+```{r}
+str(tapply)
+```
+
+
+* `X` is a vector
+* `INDEX` is a factor or a list of factors (or else they are coerced to factors)
+* `FUN` is a function to be applied
+* `...` contains other arguments to be passed to `FUN`
+* `simplify` logical whether result should be simplified
+
+Take group means.
+
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+f
+tapply(x, f, mean)
+```
+
+Find group ranges.
+
+```{r}
+tapply(x, f, range)
+```
+

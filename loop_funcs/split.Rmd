@@ -7,4 +7,67 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 
+## split
+
+`split` is not a loop function, but is useful when combined with the `apply` family. This function takes a vector or other objects and splits it into groups determined by a factor or list of factors.
+
+```{r}
+str(split)
+```
+
+* `x` vector/list or data frame
+* `f` factor (or coerced to one) or a list of factors
+* `drop` indicates whether empty factors levels should be dropped
+
+`split` always returns a list.
+
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+split(x, f)
+```
+
+A common idiom is to use `split` followed by an `lapply`.
+
+```{r}
+split(x, f) |>
+  lapply(mean)
+```
+
+## Splitting a Data Frame
+
+```{r}
+library(datasets)
+head(airquality)
+```
+
+One thing we might want to do is calculate the means of each column, grouped by each month.
+
+```{r}
+split(airquality, airquality$Month) |>
+  sapply(function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")], 
+                              na.rm = TRUE))
+
+```
+
+## Splitting on More Than One Level
+
+```{r}
+x <- rnorm(10)
+f1 <- gl(2, 5)
+f2 <- gl(5, 2)
+interaction(f1, f2)
+```
+
+Interactions can create empty levels.
+
+```{r}
+str(split(x, list(f1, f2)))
+```
+
+Specifying `drop = TRUE` will remove these empty levels.
+
+```{r}
+str(split(x, list(f1, f2), drop = TRUE))
+```
+
