@@ -207,9 +207,21 @@ Here is some sample output from the function.
 ``` r
 source("rankhospital.R")
 rankhospital("TX", "heart failure", 4)
+```
+
+    ## [1] "DETAR HOSPITAL NAVARRO"
+
+``` r
 rankhospital("MD", "heart attack", "worst")
+```
+
+    ## [1] "HARFORD MEMORIAL HOSPITAL"
+
+``` r
 rankhospital("MN", "heart attack", 5000)
 ```
+
+    ## [1] NA
 
 Save your code for this function to a file named `rankhospital.R`.
 

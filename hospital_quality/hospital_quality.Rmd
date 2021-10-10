@@ -135,7 +135,7 @@ The function should check the validity of its arguments. If an invalid `state` v
 
 Here is some sample output from the function.
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 source("rankhospital.R")
 rankhospital("TX", "heart failure", 4)
 rankhospital("MD", "heart attack", "worst")
