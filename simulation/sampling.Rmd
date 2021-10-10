@@ -1,0 +1,23 @@
+---
+title: "Simulation - Random Sampling"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Random Sampling
+
+The `sample` function draws randomly from a specified set of (scalar) objects allowing you to sample form arbitray distributions.
+
+```{r}
+set.seed(1)
+sample(1:10, 4) # sample 4 objects from the vector 1 to 10, without replacement
+sample(1:10, 4)
+sample(letters, 5)
+sample(1:10) # permutation
+sample(1:10)
+sample(1:10, replace = TRUE) # sample w/replacement
+```
+

@@ -1,0 +1,64 @@
+---
+title: "Simulation - Simulating a Linear Model"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Generating Random Numbers From a Linear Model
+
+Consider simulating the following linear model:
+
+$$y = \beta_0 + \beta_1x + \epsilon$$
+
+where $\epsilon \sim N(0, 2^2).$ Also, assume $x \sim N(0, 1^2)$, $\beta_0 = 0.5$ and $\beta_1 = 2$.
+
+```{r}
+set.seed(20)
+x <- rnorm(100) # standard normal
+e <- rnorm(100, 0, 2) # epsilons distribution
+b0 <- 0.5
+b1 <- 2
+
+y <- b0 + b1 * x + e
+summary(y)
+plot(x, y)
+```
+
+What if `x` is binary? Assume both outcomes are equally likely.
+
+```{r}
+set.seed(20)
+x <- rbinom(100, 1, 0.5) # now use a binomial distribution
+e <- rnorm(100, 0, 2) # epsilons distribution
+b0 <- 0.5
+b1 <- 2
+
+y <- b0 + b1 * x + e
+summary(y)
+plot(x, y)
+```
+
+## What About Generalized Linear Models (GLMs)?
+
+Consider simulating a Poisson model where:
+
+$$Y \sim Poisson(\mu)$$
+
+$$log(\mu) = \beta_0 + \beta_1$$
+
+and $\beta_0=0.5$, $\beta_1 = 0.3$, and $x$ is standard Normal. 
+
+```{r}
+set.seed(1)
+x <- rnorm(100)
+b0 <- 0.5
+b1 <- 0.3
+log.mu <- b0 + b1 * x
+y <- rpois(100, exp(log.mu))
+summary(y)
+plot(x, y)
+```
+
