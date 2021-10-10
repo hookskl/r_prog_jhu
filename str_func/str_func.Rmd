@@ -1,0 +1,32 @@
+---
+title: "The str Function"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## str: Compactly display the internal structure of an R object
+
+* A diagnostic function and an alternative to `summary`
+* It is especially well suited to compactly display the (abbreviated) contents of (possibly nested) lists
+* Roughly one line per basic object
+
+This is all for the capability to best answer: **What's in this object?**
+
+## Some examples
+
+Looking at some functions in R:
+
+```{r}
+str(str)
+str(lm)
+```
+Also useful for looking at data.
+
+```{r}
+x <- rnorm(100, 2, 4)
+str(x)
+```
+
