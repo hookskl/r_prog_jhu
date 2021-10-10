@@ -113,11 +113,31 @@ Here is some sample output from the function.
 ``` r
 source("best.R")
 best("TX", "heart attack")
+```
+
+    ## [1] "CYPRESS FAIRBANKS MEDICAL CENTER"
+
+``` r
 best("TX", "heart failure")
+```
+
+    ## [1] "FORT DUNCAN MEDICAL CENTER"
+
+``` r
 best("MD", "heart attack")
+```
+
+    ## [1] "JOHNS HOPKINS HOSPITAL, THE"
+
+``` r
 best("MD", "pneumonia")
-best("BB", "heart attack")
-best("NY", "hert attack")
+```
+
+    ## [1] "GREATER BALTIMORE MEDICAL CENTER"
+
+``` r
+# best("BB", "heart attack") issues "invalid state" message
+# best("NY", "hert attack") issues "invalid outcome" message
 ```
 
 Save your code for this function to a file named `best.R`.

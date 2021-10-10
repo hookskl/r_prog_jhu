@@ -80,14 +80,14 @@ The function should check the validity of its arguments. If an invalid `state` v
 
 Here is some sample output from the function.
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 source("best.R")
 best("TX", "heart attack")
 best("TX", "heart failure")
 best("MD", "heart attack")
 best("MD", "pneumonia")
-best("BB", "heart attack")
-best("NY", "hert attack")
+# best("BB", "heart attack") issues "invalid state" message
+# best("NY", "hert attack") issues "invalid outcome" message
 ```
 
 Save your code for this function to a file named `best.R`.
