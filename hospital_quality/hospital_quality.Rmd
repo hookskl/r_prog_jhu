@@ -175,7 +175,7 @@ The function should check the validity of its arguments. If an invalid `outcome`
 
 Here is some sample output from the function.
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 source("rankall.R")
 head(rankall("heart attack", 20), 10)
 tail(rankall("pneumonia", "worst"), 3)

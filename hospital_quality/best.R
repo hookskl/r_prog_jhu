@@ -12,7 +12,6 @@ best <- function(state, outcome) {
   state_pos <- 7
   
   ## Read outcome data
-  path <- "C:/Users/Zeuce/Documents/rprog_data_ProgAssignment3-data/outcome-of-care-measures.csv"
   df <- read.csv(path)
   
   ## Check that state and outcome are valid
